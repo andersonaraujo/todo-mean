@@ -21,7 +21,10 @@ if ( $host eq "") {
     exit 0;
 }
 
-my $command="curl -k -v -X GET \'$host$ARGV[0]\' 1>$out_file 2>$err_file";
+my $sessionToken = `cat SESSION_TOKEN`;
+chomp $sessionToken;
+
+my $command="curl -k -v -X GET -H \"x-access-token: $sessionToken\" \'$host$ARGV[0]\' 1>$out_file 2>$err_file";
 
 print STDERR "$command\n";
 my $start_time = [gettimeofday];
