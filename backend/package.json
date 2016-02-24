@@ -1,0 +1,33 @@
+{
+  "name": "todo-mean",
+  "version": "1.0.0",
+  "description": "Pet projeto to play around with mean stack (Mongo, Express, AngularJS and Node.js)",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andersonaraujo/todo-mean.git"
+  },
+  "keywords": [
+    "mongo",
+    "express",
+    "node.js",
+    "angularjs",
+    "mean"
+  ],
+  "author": "Anderson Araujo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andersonaraujo/todo-mean/issues"
+  },
+  "homepage": "https://github.com/andersonaraujo/todo-mean#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-load": "^1.1.15",
+    "mongoose": "^4.4.4"
+  }
+}
