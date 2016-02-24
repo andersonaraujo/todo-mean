@@ -12,7 +12,8 @@ module.exports = function (app) {
         Todo.find(function (err, todos) {
             if (err)
                 res.send(err);
-            res.json(todos);
+            else
+                res.json(todos);
         });
     });
 
@@ -29,7 +30,8 @@ module.exports = function (app) {
         todo.save(function (err) {
             if (err)
                 res.send(err);
-            res.json({message: 'Todo created!'});
+            else
+                res.json({message: 'Todo created!'});
         });
     });
 
@@ -38,7 +40,8 @@ module.exports = function (app) {
         Todo.findById(req.params.todo_id, function (err, todo) {
             if (err)
                 res.send(err);
-            res.json(todo);
+            else
+                res.json(todo);
         });
     });
 
@@ -48,18 +51,21 @@ module.exports = function (app) {
         Todo.findById(req.params.todo_id, function (err, todo) {
             if (err)
                 res.send(err);
-            todo.task = req.body.task;
-            if (req.body.completed) {
-                todo.completed = req.body.completed;
-            } else {
-                todo.completed = false;
+            else {
+                todo.task = req.body.task;
+                if (req.body.completed) {
+                    todo.completed = req.body.completed;
+                } else {
+                    todo.completed = false;
+                }
+                // save the todo
+                todo.save(function (err) {
+                    if (err)
+                        res.send(err);
+                    else
+                        res.json({message: 'Todo updated!'});
+                });
             }
-            // save the todo
-            todo.save(function (err) {
-                if (err)
-                    res.send(err);
-                res.json({message: 'Todo updated!'});
-            });
         });
     });
 
@@ -70,7 +76,8 @@ module.exports = function (app) {
         }, function (err) {
             if (err)
                 res.send(err);
-            res.json({message: 'Todo successfully deleted'});
+            else
+                res.json({message: 'Todo successfully deleted'});
         });
     });
 
