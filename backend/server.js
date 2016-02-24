@@ -7,3 +7,4 @@ app.listen(port, function () {
     console.log('Backend server running on port ' + port);
 });
 
+//TODO: Add authentication (token-based)
