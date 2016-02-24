@@ -20,6 +20,11 @@ module.exports = function (app) {
     app.post('/api/todos', function (req, res) {
         var todo = new Todo();
         todo.task = req.body.task;
+        if (req.body.completed) {
+            todo.completed = req.body.completed;
+        } else {
+            todo.completed = false;
+        }
         // save the todo and check for errors
         todo.save(function (err) {
             if (err)
@@ -44,6 +49,11 @@ module.exports = function (app) {
             if (err)
                 res.send(err);
             todo.task = req.body.task;
+            if (req.body.completed) {
+                todo.completed = req.body.completed;
+            } else {
+                todo.completed = false;
+            }
             // save the todo
             todo.save(function (err) {
                 if (err)
