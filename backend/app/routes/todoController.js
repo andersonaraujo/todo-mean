@@ -2,11 +2,6 @@ var Todo = require('../models/todo');
 
 module.exports = function (app) {
 
-    // test route to make sure everything is working (accessed at /api)
-    app.get('/api', function (req, res) {
-        res.json({message: 'hooray! welcome to our api!'});
-    });
-
     // get all the todos (accessed at GET /api/todos)
     app.get('/api/todos', function (req, res) {
         Todo.find(function (err, todos) {

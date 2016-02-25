@@ -22,7 +22,7 @@ module.exports = function (app) {
 
         } else {
 
-            if (req.url.search(/\/api\/authenticate/) >= 0) {
+            if (req.url.search(/\/api\/authenticate/) >= 0 || req.url == "/" || req.url == "/api") {
                 // user is attempting to authenticate
                 next();
 
