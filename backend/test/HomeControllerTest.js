@@ -1,18 +1,22 @@
-var sinon = require('sinon');
-var chai = require('chai');
-var expect = chai.expect;
+var express = require('../config/express')();
+var request = require('supertest')(express);
 
-var homeController = require('../app/routes/HomeController');
+describe("HomeController", function () {
 
-describe("TodoController", function () {
+    it("#Get home", function (done) {
+        request.get('/')
+            .expect('Content-type', /json/)
+            .expect(200, {
+                message: 'Checkout our API at /api'
+            }, done);
+    });
 
-    it("#Get all todos", function () {
-        var req, res, spy;
-        req = res = {};
-        spy = res.send = sinon.spy();
-
-        homeController(req, res);
-        //    expect(spy.calledOnce).to.equal(true);
+    it("#Get /api", function (done) {
+        request.get('/api')
+            .expect('Content-type', /json/)
+            .expect(200, {
+                message: 'hooray! welcome to our api!'
+            }, done);
     });
 
 });
